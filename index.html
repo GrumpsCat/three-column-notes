@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Three-Column Notes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+  <header class="text-center py-6">
+    <h1 class="text-3xl font-bold">My Three-Column Notes</h1>
+  </header>
+
+  <main class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 pb-8">
+    <section id="col1" class="bg-white rounded-2xl p-4 shadow">
+      <h2 class="text-xl font-semibold mb-2">Column 1</h2>
+      <ul id="list1"></ul>
+    </section>
+
+    <section id="col2" class="bg-white rounded-2xl p-4 shadow">
+      <h2 class="text-xl font-semibold mb-2">Column 2</h2>
+      <ul id="list2"></ul>
+    </section>
+
+    <section id="col3" class="bg-white rounded-2xl p-4 shadow">
+      <h2 class="text-xl font-semibold mb-2">Column 3</h2>
+      <ul id="list3"></ul>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 text-sm text-gray-500">
+    <a href="/add" class="underline text-blue-600">Add new note (private)</a>
+  </footer>
+
+  <script>
+    // TEMPORARY DATA — later replace with a fetch() call to your backend or JSON store
+    const posts = [
+      { column: 1, title: "Welcome Note", content: "This is your first post!" },
+      { column: 2, title: "Project Link", content: "<a href='https://example.com'>Example</a>" },
+      { column: 3, title: "Quote", content: "Simplicity is the ultimate sophistication." }
+    ];
+
+    posts.forEach(p => {
+      const li = document.createElement("li");
+      li.className = "border-b border-gray-200 py-2";
+      li.innerHTML = `<strong>${p.title}</strong><br>${p.content}`;
+      document.getElementById("list" + p.column).appendChild(li);
+    });
+  </script>
+</body>
+</html>
